@@ -52,7 +52,6 @@ class Feed extends Component {
     }
     fetch("http://localhost:8080/feed/posts?page=" + page, {
       headers: {
-        //adding 'Bearer' is just a convention for token and is optional
         Authorization: "Bearer " + this.props.token,
       },
     })
@@ -115,7 +114,6 @@ class Feed extends Component {
     this.setState({
       editLoading: true,
     });
-    //FormData() is used to send text and files
     const formData = new FormData();
     formData.append("title", postData.title);
     formData.append("content", postData.content);
@@ -130,9 +128,7 @@ class Feed extends Component {
     fetch(url, {
       method: method,
       body: formData,
-      //Content-Type is set by default by FormData
       headers: {
-        //adding 'Bearer' is just a convention for token and is optional
         Authorization: "Bearer " + this.props.token,
       },
     })
@@ -189,7 +185,6 @@ class Feed extends Component {
     fetch("http://localhost:8080/feed/post/" + postId, {
       method: "DELETE",
       headers: {
-        //adding 'Bearer' is just a convention for token and is optional
         Authorization: "Bearer " + this.props.token,
       },
     })
